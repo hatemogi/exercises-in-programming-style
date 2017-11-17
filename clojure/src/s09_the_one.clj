@@ -29,9 +29,9 @@
   (sort-by val > word-freqs))
 
 (defn top25-freqs [word-freqs]
-  (apply str
-    (map (fn [kv] (str (key kv) " - " (val kv) "\n"))
-         (take 25 word-freqs))))
+  (reduce (fn [s [w c]] (str s w " - " c "\n"))
+          ""
+          (take 25 word-freqs)))
 
 (defn bind [v f]
   (f v))
