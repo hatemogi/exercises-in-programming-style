@@ -19,4 +19,4 @@
   (let [stopwords (set (.split (.trim (slurp "../stop_words.txt")) ","))
         words (re-seq #"[a-z]{2,}" (.toLowerCase (slurp filename)))
         freqs (wf-count words stopwords {})]
-    (wf-print (sort-by second > freqs))))
+    (wf-print (take 25 (sort-by second > freqs)))))
